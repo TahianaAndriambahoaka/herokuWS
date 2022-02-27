@@ -243,10 +243,10 @@ public class SignalementController
 	}
 
 	// all termine idUtilisateur
-	@GetMapping("/signalement")
-	public List<Signalement> getAllSignalementTermine(@RequestParam long idUtilisateur, @RequestParam long estTermine) throws Exception 
+	@GetMapping("/signalement/termine")
+	public List<Signalement> getAllSignalementTermine(@RequestParam long idUtilisateur) throws Exception 
 	{
-		return this.signalementRepository.findAllTermine();
+		return this.signalementRepository.findByIdUtilisateurTermine();
 	}
 
 	// insert

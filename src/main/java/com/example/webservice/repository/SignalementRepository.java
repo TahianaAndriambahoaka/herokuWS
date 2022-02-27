@@ -119,6 +119,6 @@ public interface SignalementRepository extends JpaRepository<Signalement, Long>
 
 	// all termine
 	@Query(value="select * from signalement where idUtilisateur = ?1 and status!='en cours'",nativeQuery= true)
-	List<Signalement> findAllTermine();
+	List<Signalement> findByIdUtilisateurTermine();
 	
 }
