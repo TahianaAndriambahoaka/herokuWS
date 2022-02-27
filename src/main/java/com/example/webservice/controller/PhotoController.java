@@ -3,6 +3,7 @@ package com.example.webservice.controller;
 
 import java.io.IOException;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 
 import java.util.HashMap;
@@ -108,7 +109,7 @@ public class PhotoController {
 	}
 
 	public PhotoController() throws IOException {
-		var uploadPath = Paths.get(uploadLocation);
+		Path uploadPath = Paths.get(uploadLocation);
 		if (!Files.exists(uploadPath)) {
 			Files.createDirectories(uploadPath);
 		}
@@ -116,8 +117,8 @@ public class PhotoController {
 
 	@RequestMapping(value = "upload", method = RequestMethod.POST)
 	public Map<String, String> upload(@RequestPart MultipartFile file) {
-		var filename = UUID.randomUUID().toString() + file.getOriginalFilename();
-		var dest = Paths.get(uploadLocation + "/" + filename);
+		String filename = UUID.randomUUID().toString() + file.getOriginalFilename();
+		Path dest = Paths.get(uploadLocation + "/" + filename);
 		try {
 			Files.copy(file.getInputStream(), dest);
 		} catch (IOException e) {

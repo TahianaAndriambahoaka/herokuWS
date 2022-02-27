@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.text.SimpleDateFormat;
 import java.util.Base64;
@@ -50,7 +51,7 @@ public class SignalementController
 
 	public SignalementController() throws IOException
 	{
-		var uploadPath = Paths.get(uploadLocation);
+		Path uploadPath = Paths.get(uploadLocation);
         if(!Files.exists(uploadPath)) { Files.createDirectories(uploadPath); }
 	}
 
@@ -278,7 +279,7 @@ public class SignalementController
 
 	private String saveFile(MultipartFile file)
     {
-        var filename = UUID.randomUUID().toString()+file.getOriginalFilename();
+        String filename = UUID.randomUUID().toString()+file.getOriginalFilename();
         // var dest = Paths.get(uploadLocation + "/" + filename);
         // try 
         // {
