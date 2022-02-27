@@ -116,5 +116,9 @@ public interface SignalementRepository extends JpaRepository<Signalement, Long>
 	// getNbSignalementParType BackOffice
 	@Query(value="select Type.id, Type.nom, count(Signalement.id) nb from Signalement join Type on (Type.id=Signalement.idType) group by Type.id, Type.nom",nativeQuery= true)
 	List<Object> getNbSignalementParType();
+
+	// all termine
+	@Query(value="select * from signalement where status!='en cours'",nativeQuery= true)
+	List<Signalement> findAllTermine();
 	
 }

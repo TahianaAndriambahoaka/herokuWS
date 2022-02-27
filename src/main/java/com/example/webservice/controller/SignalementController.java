@@ -227,6 +227,13 @@ public class SignalementController
 		return this.signalementRepository.findAll();
 	}
 
+	// all termine
+	@GetMapping("/signalements/termine")
+	public List<Signalement> getAllSignalementTermine() throws Exception 
+	{
+		return this.signalementRepository.findAllTermine();
+	}
+
 	// get signalement by id
 	@GetMapping("/signalementRegion/{id}")
 	public ResponseEntity<Signalement> getRegionById(@PathVariable(value = "id") long idSignalement) throws Exception 
