@@ -118,7 +118,7 @@ public interface SignalementRepository extends JpaRepository<Signalement, Long>
 	List<Object> getNbSignalementParType();
 
 	// all termine
-	@Query(value="select * from signalement where status!='en cours'",nativeQuery= true)
+	@Query(value="select * from signalement where idUtilisateur = ?1 and status!='en cours'",nativeQuery= true)
 	List<Signalement> findAllTermine();
 	
 }

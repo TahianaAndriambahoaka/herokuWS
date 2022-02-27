@@ -226,14 +226,7 @@ public class SignalementController
 	{
 		return this.signalementRepository.findAll();
 	}
-
-	// all termine
-	@GetMapping("/signalements/termine")
-	public List<Signalement> getAllSignalementTermine() throws Exception 
-	{
-		return this.signalementRepository.findAllTermine();
-	}
-
+	
 	// get signalement by id
 	@GetMapping("/signalementRegion/{id}")
 	public ResponseEntity<Signalement> getRegionById(@PathVariable(value = "id") long idSignalement) throws Exception 
@@ -247,6 +240,13 @@ public class SignalementController
 	public List<Signalement> getByIdUtilisateur(@RequestParam long idUtilisateur) throws Exception 
 	{
 		return this.signalementRepository.findByIdUtilisateur(idUtilisateur);
+	}
+
+	// all termine idUtilisateur
+	@GetMapping("/signalement")
+	public List<Signalement> getAllSignalementTermine(@RequestParam long idUtilisateur, @RequestParam long estTermine) throws Exception 
+	{
+		return this.signalementRepository.findAllTermine();
 	}
 
 	// insert
